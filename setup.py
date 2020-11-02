@@ -41,10 +41,11 @@ setup(
     # These are the dependencies the library needs in order to run.
     install_requires=[
         'requests',
-        'csv',
+        'pandas',
         'urllib3',
         'bs4',
-        'lxml'
+        'lxml',
+        'argparse'
     ],
 
     # Here are the keywords of my library.
