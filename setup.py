@@ -41,7 +41,6 @@ setup(
     # These are the dependencies the library needs in order to run.
     install_requires=[
         'requests',
-        'pandas',
         'csv',
         'urllib3',
         'bs4',
