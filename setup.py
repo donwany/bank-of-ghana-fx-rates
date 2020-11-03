@@ -22,7 +22,7 @@ setup(
     #   - MAJOR VERSION 0
     #   - MINOR VERSION 1
     #   - MAINTENANCE VERSION 0
-    version='0.1.0',
+    version='0.1.6',
 
     # Here is a small description of the library. This appears
     # when someone searches for the library on https://pypi.org/search.
@@ -44,8 +44,7 @@ setup(
         'pandas',
         'urllib3',
         'bs4',
-        'lxml',
-        'argparse'
+        'lxml'
     ],
 
     # Here are the keywords of my library.

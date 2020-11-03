@@ -1,4 +1,4 @@
-# Bank of Ghana Exchange Rate Python Library
+## Bank of Ghana Exchange Rate Python Library
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@
 - [Support this Project](#support-these-projects)
 
 ## Overview
-Current Version: 0.1.0
+Current Version: 0.1.6
 
 The unofficial Python API client library for Bank of Ghana allows individuals to pull historical and real-time exchange rates data using the Python programming language. 
 Learn more by visiting https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
@@ -20,18 +20,18 @@ python_requires='>=3.5' or later
 
 install_requires=[
         'requests',
-        'csv',
         'urllib3',
         'bs4',
-        'lxml',
-        'argparse'
+        'lxml'
     ]
 ```
 
 ## Installation
 
-```commandline
-pip install bank-of-ghana-fx-rate
+```python
+pip install bank-of-ghana-fx-rates==0.1.6
+
+pip install https://buc2017.s3.us-east-2.amazonaws.com/bank_of_ghana_fx_rates-0.1.6-py3-none-any.whl
 ```
 
 ## Installation from repo
@@ -49,23 +49,38 @@ you can use the library wherever you want.
 pip install -e .
 ```
 
+## Clone Repo
 ```bash
 git clone https://github.com/donwany/bank-of-ghana-fx-rates
 
 cd bank-of-ghana-fx-rates
 
+python scraper.py --url [PATH-TO-REMOTE-LINK]
+```
+If you not specify any url, the default url is used. See example below:
+
+## Example
+```bash
 python scraper.py
 
 python scraper.py https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/
 
 python scraper.py https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+```
+
+```python
+from bog import scraper
+from bog.scraper import RatesURL
+
+url = RatesURL()
+url.setUrl('https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/')
+
+print(url.getUrl())
+
+scraper.run(url)
 
 ```
 
 ## Support this Project
-
-**Paypal:**
-Help support this project and future projects by donating to my [Paypal](theodondre@gmail.com). I'm always looking to add more content for individuals like yourself.
-
 **YouTube:**
 If you'd like to watch more of my content, feel free to visit my YouTube channel [Theophilus Siameh](https://www.youtube.com/channel/UCLR6pmwKhA0OsJBLeY0WF_A/videos?view_as=subscriber).

@@ -15,27 +15,22 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 BASE_URL = 'https://www.bog.gov.gh/wp-admin/admin-ajax.php?action=get_wdtable&table_id'
 
-
-def argparser():
-    '''
-    argparser defnition
-    '''
-    parser = argparse.ArgumentParser(description='Bank of Ghana FX Rates')
-    parser.add_argument('--url', default='https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/'
-                        , type=str, help='URL to page to scrap')
-    parser.add_argument('--data_split_seed', default=42, type=int)
-    parser.add_argument('--resume', default='')
-    parser.add_argument('--lr', default=0.001, type=float, help='Initial learning rate')
-    parser.add_argument('--gamma', default=0.5, type=float)
-    parser.add_argument('--do', default=[], type=float, nargs='*')
-    parser.add_argument('--epochs', default=100, type=int, help='Number of epochs')
-    parser.add_argument('--decrease_from', default=0, type=int)
-    parser.add_argument('--bs', default=256, type=int, help='Batch size')
-    parser.add_argument('--test_bs', default=500, type=int, help='Batch size for test dataloader')
-
-    args = parser.parse_args()
-    return args
-
+# def argparser():
+#     '''
+#     argparser defnition
+#     '''
+#     parser = argparse.ArgumentParser(description='Bank of Ghana FX Rates')
+#     parser.add_argument('--url',
+#                         default='https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/',
+#                         type=str,
+#                         help='URL to page to scrap')
+#
+#     #parser.add_argument('--dataFolder', default='', type=str, help='Where to output historical data')
+#
+#     args = parser.parse_args()
+#     return args
+#
+# args = argparser()
 
 def scrape_table(url=''):
     '''scrape table definition'''
@@ -81,7 +76,7 @@ def get_table_info(url):
     if table is None or input_wdt is None:
         print('Non-generic table url. Please contact developer.')
         return None
-    if url[-1] is '/':
+    if url[-1] in '/':
         name = url.split('/')[-2]
     else:
         name = url.split('/')[-1]
@@ -124,15 +119,35 @@ def save_csv(name, headers, lines):
             writer.writerow(line)
     print(f'{name}.csv saved! Total records: {len(lines)}')
 
+class RatesURL(object):
+    def __init__(self, url=''):
+        self.url = url
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1 and 'https://' in sys.argv[1]:
-        url = sys.argv[1].strip()
-        table = scrape_table(url)
+    def getUrl(self):
+        return self.url
+
+    def setUrl(self, url):
+        self.url = url
+
+def run(url):
+    #if len(sys.argv) > 1 and 'https://' in sys.argv[1]:
+    #url = sys.argv[1].strip()
+    #url = args.url
+    #url = RatesURL(url)
+
+    if 'https://' in url.getUrl():
+        table = scrape_table(str(url.getUrl()))
     else:
         table = scrape_table()
     if table is not None:
         save_csv(table['name'], table['headers'], table['data'])
+
+
+if __name__ == '__main__':
+    url = RatesURL()
+    url.setUrl('https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/')
+    run(url)
+
 
 
 
