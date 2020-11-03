@@ -29,9 +29,9 @@ install_requires=[
 ## Installation
 
 ```python
-pip install bank-of-ghana-fx-rates==0.1.6
 
 pip install https://buc2017.s3.us-east-2.amazonaws.com/bank_of_ghana_fx_rates-0.1.6-py3-none-any.whl
+
 ```
 
 ## Installation from repo
@@ -73,7 +73,7 @@ from bog import scraper
 from bog.scraper import RatesURL
 
 url = RatesURL()
-url.setUrl('https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/')
+url.setUrl('https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/')
 
 print(url.getUrl())
 
