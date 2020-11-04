@@ -10,10 +10,22 @@ import csv
 import sys
 from time import sleep
 import argparse
+import os
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 BASE_URL = 'https://www.bog.gov.gh/wp-admin/admin-ajax.php?action=get_wdtable&table_id'
+
+def mkdir(path):
+    """
+    Create directory
+    """
+    if not os.path.exists(path):
+        os.makedirs(path)
+    else:
+        print(f' * Directory %s already exists = {path}')
+
+
 
 # def argparser():
 #     '''

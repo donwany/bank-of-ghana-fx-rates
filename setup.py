@@ -47,6 +47,10 @@ setup(
         'lxml'
     ],
 
+    entry_points ={
+        ['bank-of-ghana-fx-cli=bog.scraper.run']
+    },
+
     # Here are the keywords of my library.
     keywords='Bank of Ghana, Ghana, Ghana API, Bank of Ghana Exchange Rates, government of Ghana, finance, APIs',
 

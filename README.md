@@ -67,7 +67,7 @@ git clone https://github.com/donwany/bank-of-ghana-fx-rates
 
 cd bank-of-ghana-fx-rates
 
-python scraper.py --url [PATH-TO-REMOTE-LINK]
+python bog/scraper.py [PATH-TO-REMOTE-LINK]
 ```
 If you not specify any url, the default url is used. See example below:
 
@@ -75,9 +75,9 @@ If you not specify any url, the default url is used. See example below:
 ```bash
 python scraper.py
 
-python scraper.py https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/
+python bog/scraper.py https://www.bog.gov.gh/treasury-and-the-markets/treasury-bill-rates/
 
-python scraper.py https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+python bog/scraper.py https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
 ```
 
 ## Support this Project
